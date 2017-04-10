@@ -1,9 +1,14 @@
 language: python
 python:
-  - "3.4"
-  - "3.5"
-# command to install dependencies
-install: "pip install -r requirements.txt"
-# command to run tests
+- '3.4'
+- '3.5'
+install: pip install -r requirements.txt
 script: python -m unittest discover
-
+deploy:
+  provider: pypi
+  user: goldrak
+  password:
+    secure: XXit/Jm/9qLwsopI0QeIZDHxKKj/HrV8aH5xl6bqn3UE0Z764VPAm69JyvQO37UYrDWuDZ8Qf/nO5eApvAdrQ11GChG3WwgjAziq0uNaPQ23NXPy5XEaWAORHqP6KLWuz1gMH6oGNEdjZgq17oFc1W05f6h2r+nFc4DpnVub3dHq01qf/Jcjsearl6yLJrhb0MXk61EjdaBcB/j96JDVI9U7uNdhFX4Fdyuk5KqdgIQeoK0JRyiQO0z4yM5/nk/dxTRcBdNHTzbWz2jBKoq+K9PMTa/xFZSwS+V2blxBZ3E6KxupNWXUMlmAIix2NV+3cxXL/X6yQuL54mvHRkI/YRfghsKAYBXh7YbwGrCNPoJWEZ+L2nAfl/WYvrU6uZYFlFa31rzZ9kW1Tjb7Zp6OeaaLC4eonYz7BTCEFmxmJN6jrMuRZDTFdYusZwnz3ABngfCxjM5lK5eHygMw2rilJPFdm1WluNH3uFoSqdkLBNvsXGYXkJIrMSR9/JbLekaPW6E0GazQDyPJAvNaVRSmUTpi+18hAy1sIfPlDp6f1NbJJvA1PpivK8Wn6TlweS+3QkShoEYiBw8YQkoya7fOlq3NgDW1LlmiVNsG+RfdvG4LgCBkAZyW4GJGJjLcenlFbRNZu/mBLIDQld4pSVdbnU6HXgwt+dhXy5IZs1r2cTM=
+  on:
+    branch: master
+    tags: true
