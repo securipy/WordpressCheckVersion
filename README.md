@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/securipy/WordpressCheckVersion.svg?branch=master)](https://travis-ci.org/securipy/WordpressCheckVersion)
+
 # WordpressCheckVersion
 Python class to process html to detect wordpress version
 
