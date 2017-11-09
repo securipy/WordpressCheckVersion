@@ -13,5 +13,11 @@ $ git clone git@github.com:securipy/WordpressCheckVersion.git
 $ pip install -r requirements.txt
 
 ```
+or can install with pip
+
+```
+$ pip install WordpressCheckVersion
+```
+
 
 Import in your project and enjoy
