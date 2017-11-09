@@ -10,7 +10,7 @@ class WCVTests(unittest.TestCase):
         file = open(os.path.join(os.path.dirname(__file__), 'webfiles/readme.html'))
         testdata = file.read()
         w = WordpressCheckVersion()
-        v = w.getReadme(testdata)
+        v = w.get_readme(testdata)
         file.close()
         self.assertEqual(v, '4.7')
 
@@ -19,7 +19,7 @@ class WCVTests(unittest.TestCase):
         file = open(os.path.join(os.path.dirname(__file__), 'webfiles/readme_no_version.html'))
         testdata = file.read()
         w = WordpressCheckVersion()
-        v = w.getReadme(testdata)
+        v = w.get_readme(testdata)
         file.close()
         self.assertFalse(v)
 
@@ -27,7 +27,7 @@ class WCVTests(unittest.TestCase):
         file = open(os.path.join(os.path.dirname(__file__), 'webfiles/wp-login.html'))
         testdata = file.read()
         w = WordpressCheckVersion()
-        v = w.getAdmin(testdata)
+        v = w.get_admin(testdata)
         file.close()
         self.assertEqual(v, '4.7.3')
 
@@ -36,7 +36,7 @@ class WCVTests(unittest.TestCase):
         file = open(os.path.join(os.path.dirname(__file__), 'webfiles/wp-login_no_version.html'))
         testdata = file.read()
         w = WordpressCheckVersion()
-        v = w.getAdmin(testdata)
+        v = w.get_admin(testdata)
         file.close()
         self.assertFalse(v)
 
@@ -44,7 +44,7 @@ class WCVTests(unittest.TestCase):
         file = open(os.path.join(os.path.dirname(__file__), 'webfiles/feed.xml'))
         testdata = file.read()
         w = WordpressCheckVersion()
-        v = w.getGeneratorFeed(testdata)
+        v = w.get_generator_feed(testdata)
         file.close()
         self.assertEqual(v, '4.7.3')
 
@@ -52,7 +52,7 @@ class WCVTests(unittest.TestCase):
         file = open(os.path.join(os.path.dirname(__file__), 'webfiles/feed_no_version.xml'))
         testdata = file.read()
         w = WordpressCheckVersion()
-        v = w.getGeneratorFeed(testdata)
+        v = w.get_generator_feed(testdata)
         file.close()
         self.assertFalse(v)
 
@@ -60,7 +60,7 @@ class WCVTests(unittest.TestCase):
         file = open(os.path.join(os.path.dirname(__file__), 'webfiles/index.html'))
         testdata = file.read()
         w = WordpressCheckVersion()
-        v = w.getGeneratorSite(testdata)
+        v = w.get_generator_site(testdata)
         file.close()
         self.assertEqual(v, '4.7.3')
 
@@ -68,7 +68,7 @@ class WCVTests(unittest.TestCase):
         file = open(os.path.join(os.path.dirname(__file__), 'webfiles/index_no_version.html'))
         testdata = file.read()
         w = WordpressCheckVersion()
-        v = w.getGeneratorSite(testdata)
+        v = w.get_generator_site(testdata)
         file.close()
         self.assertFalse(v)
 
@@ -76,7 +76,7 @@ class WCVTests(unittest.TestCase):
         file = open(os.path.join(os.path.dirname(__file__), 'webfiles/index_no_generator.html'))
         testdata = file.read()
         w = WordpressCheckVersion()
-        v = w.getGeneratorSite(testdata)
+        v = w.get_generator_site(testdata)
         file.close()
         self.assertFalse(v)
 
