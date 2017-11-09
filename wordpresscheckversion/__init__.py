@@ -9,7 +9,7 @@ from bs4 import BeautifulSoup
 
 __author__ = "GoldraK"
 __credits__ = "GoldraK"
-__version__ = "0.1"
+__version__ = "0.1.0"
 __maintainer__ = "GoldraK"
 __email__ = "goldrak@gmail.com"
 __status__ = "Development"
@@ -20,12 +20,12 @@ class WordpressCheckVersion(object):
     Wordpress Check Version object
     """
 
-    __slots__ =('generator', 'regex', 'matches', 'url_version', 'html', 'part_version')
+    __slots__ = ('generator', 'regex', 'matches', 'url_version', 'html', 'part_version')
 
     def __init__(self):
-        pass
+        self.url_version = ""
 
-    def getAdmin(self,html):
+    def get_admin(self, html):
         """
         This function read version into wp-login
         """
@@ -39,7 +39,7 @@ class WordpressCheckVersion(object):
         else:
             return False
 
-    def getGeneratorSite(self,html):
+    def get_generator_site(self, html):
         """
         This function search version into meta generator
         """
@@ -54,7 +54,7 @@ class WordpressCheckVersion(object):
         else:
             return False
 
-    def getGeneratorFeed(self,html):
+    def get_generator_feed(self, html):
         """
         This function search version into feed
         """
@@ -64,11 +64,11 @@ class WordpressCheckVersion(object):
             regex = r"<generator>([^<]*)</generator>"
             matches = re.match(regex, str(generator), re.IGNORECASE)
             if matches:
-                for groupNum in range(0, len(matches.groups())):
-                    groupNum = groupNum + 1
-                    url_version = matches.group(groupNum)
-                if url_version:
-                    part_version = url_version.split('?v=')
+                for group_num in range(0, len(matches.groups())):
+                    group_num = group_num + 1
+                    self.url_version = matches.group(group_num)
+                if self.url_version:
+                    part_version = self.url_version.split('?v=')
                     if len(part_version) == 2:
                         return part_version[1]
                     else:
@@ -80,7 +80,7 @@ class WordpressCheckVersion(object):
         else:
             return False
 
-    def getReadme(self,html):
+    def get_readme(self, html):
         """
         This function search version into Readme.html
         """
