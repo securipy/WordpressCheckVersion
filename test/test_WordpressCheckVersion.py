@@ -1,5 +1,6 @@
 import os
 import unittest
+from testfixtures import compare
 
 from wordpresscheckversion import WordpressCheckVersion
 
@@ -80,6 +81,11 @@ class WCVTests(unittest.TestCase):
         file.close()
         self.assertFalse(v)
 
+    def test_md5_database(self):
+        w = WordpressCheckVersion()
+        v = w.get_md5('8610f03fe77640dee8c4cc924e060f12')
+        resulttest = [('4.8.3',), ('4.8.2',), ('4.8.1',), (4.8,), ('4.7.7',), ('4.7.6',), ('4.7.5',), ('4.7.4',), ('4.7.3',), ('4.7.2',), ('4.7.1',), (4.7,), ('4.6.8',), ('4.6.7',), ('4.6.6',), ('4.6.5',), ('4.6.4',), ('4.6.3',), ('4.6.2',), ('4.6.1',), (4.6,), ('4.5.11',), ('4.5.10',), ('4.5.9',), ('4.5.8',), ('4.5.7',), ('4.5.6',), ('4.5.5',), ('4.5.4',), ('4.5.3',)]
+        self.assertListEqual(v,resulttest)
 
 if __name__ == '__main__':
     unittest.main()

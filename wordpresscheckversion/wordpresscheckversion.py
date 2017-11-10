@@ -5,6 +5,8 @@
 
 import re
 
+from .models import Database
+
 from bs4 import BeautifulSoup
 
 __author__ = "GoldraK"
@@ -20,9 +22,10 @@ class WordpressCheckVersion(object):
     Wordpress Check Version object
     """
 
-    __slots__ = ('generator', 'regex', 'matches', 'url_version', 'html', 'part_version')
+    __slots__ = ('generator', 'regex', 'matches', 'url_version', 'html', 'part_version', 'db', 'wp_md5')
 
     def __init__(self):
+        self.db = Database()
         self.url_version = ""
 
     def get_admin(self, html):
@@ -95,3 +98,10 @@ class WordpressCheckVersion(object):
                 return matches.group(2)
         else:
             return False
+
+    def get_md5(self, wp_md5):
+        """
+        This function search into version.db md5 files
+        """
+        md5_result = self.db.get_version_md5(wp_md5)
+        return md5_result
