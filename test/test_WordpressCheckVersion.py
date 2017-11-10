@@ -1,6 +1,5 @@
 import os
 import unittest
-from testfixtures import compare
 
 from wordpresscheckversion import WordpressCheckVersion
 
